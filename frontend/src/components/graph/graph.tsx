@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import type { Dispatch, FC, ReactNode, SetStateAction} from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Edge, Node, NodeProps, NodeTypes, OnInit, ReactFlowInstance, ReactFlowProps} from 'reactflow';
-import ReactFlow, { Background, Controls, PanOnScrollMode, useReactFlow } from 'reactflow';
+import ReactFlow, { Background, Controls, useReactFlow } from 'reactflow';
 import { Tip } from '../tip';
 import { useTranslation } from '@/hooks/use-translation';
 import { FloatingGraphEdge, GraphEdgeConnectionLine } from './edge';
@@ -65,45 +65,10 @@ export const Graph: FC<IGraphProps> = (props) => {
     const [isLayingOut, setIsLayingOut] = useState(true);
     const { getNodes } = useReactFlow();
     const [downloading, setDownloading] = useState(false);
-    const [isSpacePressed, setIsSpacePressed] = useState(false);
 
     const edgeTypes = useMemo(() => ({
         floatingGraphEdge: FloatingGraphEdge,
     }), []);
-
-    // Figma-like space key handling for pan mode
-    useEffect(() => {
-        const handleKeyDown = (e: KeyboardEvent) => {
-            // Prevent default space behavior (page scroll) when not in an input
-            if (e.code === 'Space' && e.target === document.body) {
-                e.preventDefault();
-            }
-            if (e.code === 'Space' && !isSpacePressed) {
-                setIsSpacePressed(true);
-            }
-        };
-
-        const handleKeyUp = (e: KeyboardEvent) => {
-            if (e.code === 'Space') {
-                setIsSpacePressed(false);
-            }
-        };
-
-        // Also handle blur to reset state when window loses focus
-        const handleBlur = () => {
-            setIsSpacePressed(false);
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-        window.addEventListener('keyup', handleKeyUp);
-        window.addEventListener('blur', handleBlur);
-
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-            window.removeEventListener('keyup', handleKeyUp);
-            window.removeEventListener('blur', handleBlur);
-        };
-    }, [isSpacePressed]);
 
     const onLayout = useCallback((type = "dagre", padding?: number) => {
         const nodes = getNodes();
@@ -180,27 +145,20 @@ export const Graph: FC<IGraphProps> = (props) => {
             });
     }, []);
 
-    // Check if Mac for proper modifier key
-    const isMac = typeof navigator !== 'undefined' && navigator.platform.toUpperCase().indexOf('MAC') >= 0;
-
+    // Dragging the background pans and the wheel zooms; Shift+drag selects.
     return <ReactFlow
         ref={reactFlowWrapper}
         className={classNames("group rounded-lg transition-all", {
             "laying-out opacity-0": isLayingOut,
             "opacity-100": !isLayingOut,
-            "!cursor-grab": isSpacePressed,
         })}
         {...reactFlowProps}
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         nodes={controlledNodes}
         edges={controlledEdges}
-        panOnScroll
-        panOnScrollMode={PanOnScrollMode.Free}
-        panOnDrag={isSpacePressed}
-        selectionOnDrag={!isSpacePressed}
+        panOnDrag={true}
         zoomOnScroll={true}
-        zoomActivationKeyCode={isMac ? "Meta" : "Control"}
         zoomOnPinch={true}
         zoomOnDoubleClick={true}
         nodesConnectable={false}
