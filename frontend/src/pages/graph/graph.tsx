@@ -55,6 +55,14 @@ import {ph} from "../../utils/privacy";
 
 type GraphStorageUnit = NonNullable<GetGraphQuery["Graph"]>[number]["Unit"];
 
+// The schema the backend reads as every schema at once (source.AllSchemasGraphScope).
+const ALL_SCHEMAS = "*";
+
+// The name a unit has in the graph: "schema.table" across all schemas, the table's name otherwise.
+function graphUnitName(ref: GraphStorageUnit["Ref"], allSchemas: boolean): string {
+    return allSchemas ? ref.Path.slice(-2).join(".") : getObjectNameFromRef(ref);
+}
+
 // Helper function to group storage units by type
 function groupByType(units: GraphStorageUnit[]) {
     const groups: Record<string, GraphStorageUnit[]> = {};
@@ -77,6 +85,9 @@ interface GraphSidebarProps {
     setSelectedUnits: (units: Set<string> | ((prev: Set<string>) => Set<string>)) => void;
     storageUnits: GraphStorageUnit[];
     unitsLoading: boolean;
+    canShowAllSchemas: boolean;
+    allSchemas: boolean;
+    setAllSchemas: (allSchemas: boolean) => void;
 }
 
 const GraphSidebar: FC<GraphSidebarProps> = ({
@@ -86,7 +97,10 @@ const GraphSidebar: FC<GraphSidebarProps> = ({
     selectedUnits,
     setSelectedUnits,
     storageUnits,
-    unitsLoading
+    unitsLoading,
+    canShowAllSchemas,
+    allSchemas,
+    setAllSchemas
 }) => {
     const { t } = useTranslation('pages/graph');
     const { storageUnitLabel } = useSourceContract(current?.Type);
@@ -141,6 +155,11 @@ const GraphSidebar: FC<GraphSidebarProps> = ({
                             placeholder={t('searchTables')}
                             aria-label={t('searchTables')}
                         />
+                        {canShowAllSchemas &&
+                            <label className="flex items-center gap-2 pt-3 cursor-pointer select-none">
+                                <Checkbox checked={allSchemas} onCheckedChange={(checked) => { setAllSchemas(checked === true); }} />
+                                <p className="text-sm">{t('allSchemas')}</p>
+                            </label>}
                     </div>
                     <SidebarGroup>
                         {
@@ -173,9 +192,13 @@ export const GraphPage: FC = () => {
     const [isInitialized, setIsInitialized] = useState(false);
     const [tableColumns, setTableColumns] = useState<Record<string, any[]>>({});
     const [loadingColumns, setLoadingColumns] = useState<Record<string, boolean>>({});
+    const [allSchemas, setAllSchemas] = useState(false);
+    const canShowAllSchemas = currentType === "Postgres";
+    const graphSchema = canShowAllSchemas && allSchemas ? ALL_SCHEMAS : schema;
+    const isAllSchemas = graphSchema === ALL_SCHEMAS;
 
     const [fetchColumnsBatch] = useLazyQuery(GetColumnsBatchDocument);
-    const graphScopeRef = useMemo(() => buildSourceScopeRef(item, current, schema), [currentDatabase, item, schema]);
+    const graphScopeRef = useMemo(() => buildSourceScopeRef(item, current, graphSchema), [currentDatabase, item, graphSchema]);
     const shouldSkipGraph = !current || !item?.contract || (item.contract.GraphScopeKind != null && graphScopeRef == null);
     const graphQueryOptions = shouldSkipGraph
         ? skipToken
@@ -203,7 +226,7 @@ export const GraphPage: FC = () => {
         setSelectedUnits(new Set());
         setTableColumns({});
         setLoadingColumns({});
-    }, [currentProfileId, currentDatabase, schema]);
+    }, [currentProfileId, currentDatabase, graphSchema]);
 
     // Refetch when the user switches profile or database while already on the graph page.
     // The initial fetch is handled by useQuery's variables changing.
@@ -219,16 +242,16 @@ export const GraphPage: FC = () => {
         }
     }, [currentProfileId, currentDatabase, shouldSkipGraph, refetchGraph]);
 
-    // Default selection logic: auto-select up to 10 units
+    // Default selection logic: auto-select up to 10 units, or every unit across all schemas
     useEffect(() => {
         const units = storageUnits;
         if (units.length === 0) return;
         setSelectedUnits(prev => {
             if (prev.size > 0) return prev;
-            const toSelect = units.slice(0, 10);
+            const toSelect = isAllSchemas ? units : units.slice(0, 10);
             return new Set(toSelect.map(u => u.Name));
         });
-    }, [storageUnits]);
+    }, [isAllSchemas, storageUnits]);
 
     const tableColumnsRef = useRef(tableColumns);
     tableColumnsRef.current = tableColumns;
@@ -237,14 +260,14 @@ export const GraphPage: FC = () => {
 
     const loadColumnsForRefs = useCallback((refs: GraphStorageUnit["Ref"][]) => {
         const refsToFetch = refs.filter(ref => {
-            const unitName = getObjectNameFromRef(ref);
+            const unitName = graphUnitName(ref, isAllSchemas);
             return !(unitName in tableColumnsRef.current) && !loadingColumnsRef.current[unitName];
         });
         if (refsToFetch.length === 0) {
             return;
         }
 
-        const unitNames = refsToFetch.map(ref => getObjectNameFromRef(ref));
+        const unitNames = refsToFetch.map(ref => graphUnitName(ref, isAllSchemas));
         setLoadingColumns(prev => {
             const next = { ...prev };
             for (const unitName of unitNames) {
@@ -261,7 +284,7 @@ export const GraphPage: FC = () => {
                 setTableColumns(prev => {
                     const next = { ...prev };
                     for (const item of batch) {
-                        next[getObjectNameFromRef(item.StorageUnit)] = item.Columns;
+                        next[graphUnitName(item.StorageUnit, isAllSchemas)] = item.Columns;
                     }
                     return next;
                 });
@@ -277,7 +300,7 @@ export const GraphPage: FC = () => {
                 return next;
             });
         });
-    }, [fetchColumnsBatch]);
+    }, [fetchColumnsBatch, isAllSchemas]);
 
     useEffect(() => {
         const refs = storageUnits
@@ -466,6 +489,9 @@ export const GraphPage: FC = () => {
             setSelectedUnits={setSelectedUnits}
             storageUnits={storageUnits}
             unitsLoading={graphLoading}
+            canShowAllSchemas={canShowAllSchemas}
+            allSchemas={allSchemas}
+            setAllSchemas={setAllSchemas}
         />
     }>
         <div className="flex-1 h-full">

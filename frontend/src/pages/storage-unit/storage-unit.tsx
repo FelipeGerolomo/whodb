@@ -69,8 +69,9 @@ import {trackOptionChanged} from "../../config/frontend-analytics";
 import {useAppDispatch, useAppSelector} from "../../store/hooks";
 import {Tip} from '../../components/tip';
 import {SettingsActions} from '../../store/settings';
+import {DatabaseActions} from '../../store/database';
 import {useTranslation} from '../../hooks/use-translation';
-import {buildSourceParentObjectRef, buildSourceParentRef} from '../../utils/source-refs';
+import {buildSourceParentObjectRef, buildSourceParentRef, getObjectNameFromRef} from '../../utils/source-refs';
 import {formatAttributeValue} from '../../utils/functions';
 import { findSourceObjectType, type SourceTypeItem } from '../../config/source-types';
 import { CreateSourceObjectCard } from './create-source-object-card';
@@ -767,18 +768,24 @@ type StorageUnitGraphCardData = GetGraphQuery['Graph'][number]['Unit'] & {
 
 export const StorageUnitGraphCard: FC<IGraphCardProps<StorageUnitGraphCardData>> = ({ data }) => {
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const { t } = useTranslation('pages/storage-unit');
 
     const handleNavigateTo = useCallback(() => {
         if (data == null) {
             return;
         }
+        // An all-schemas graph names the unit "schema.table": explore it in its own schema.
+        const tableName = getObjectNameFromRef(data.Ref);
+        if (tableName !== data.Name) {
+            dispatch(DatabaseActions.setSchema(data.Ref.Path[data.Ref.Path.length - 2]));
+        }
         void navigate(InternalRoutes.Dashboard.ExploreStorageUnit.path, {
             state: {
-                unit: data,
+                unit: { ...data, Name: tableName },
             }
         });
-    }, [navigate, data]);
+    }, [dispatch, navigate, data]);
 
     // Attributes contains metadata (Type, Total Size, etc.)
     // Columns contains field definitions with FK/PK info for handles

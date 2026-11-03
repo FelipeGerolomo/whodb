@@ -1,5 +1,5 @@
 # Builds WhoDB CE from this branch for linux/amd64 and linux/arm64, each on its own native runner,
-# and publishes one multi-arch image to ghcr.io/felipegerolomo/whodb:<WHODB_VERSION>-pan.
+# and publishes one multi-arch image to ghcr.io/felipegerolomo/whodb:<WHODB_VERSION>-<commit>.
 # The upstream workflows are removed on this branch, so only this one runs.
 
 name: Image
@@ -113,6 +113,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - working-directory: /tmp/digests
         run: |
-          docker buildx imagetools create --tag "$IMAGE:$WHODB_VERSION-pan" \
-            $(printf "$IMAGE@sha256:%s " *)
-          docker buildx imagetools inspect "$IMAGE:$WHODB_VERSION-pan"
+          tag="$IMAGE:$WHODB_VERSION-${GITHUB_SHA::7}"
+          docker buildx imagetools create --tag "$tag" $(printf "$IMAGE@sha256:%s " *)
+          docker buildx imagetools inspect "$tag"

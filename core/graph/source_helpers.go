@@ -22,6 +22,7 @@ import (
 	"fmt"
 	"slices"
 	"strconv"
+	"strings"
 
 	"github.com/clidey/whodb/core/graph/model"
 	"github.com/clidey/whodb/core/src/auth"
@@ -591,6 +592,12 @@ func appendGraphPath(parent *source.ObjectRef, name string) []string {
 		return []string{name}
 	}
 	path := slices.Clone(parent.Path)
+	// An all-schemas graph names its units "schema.table": the path takes their own schema.
+	if len(path) > 0 && path[len(path)-1] == source.AllSchemasGraphScope {
+		if schema, table, ok := strings.Cut(name, "."); ok {
+			return append(path[:len(path)-1], schema, table)
+		}
+	}
 	path = append(path, name)
 	return path
 }

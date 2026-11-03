@@ -138,6 +138,10 @@ type GraphRelationship struct {
 	TargetColumn     *string
 }
 
+// AllSchemasGraphScope is the schema a graph request names to cover every schema at once. The
+// units it returns are named "schema.table", and so are their relationships.
+const AllSchemasGraphScope = "*"
+
 // GraphUnit represents one browseable object and its relationships.
 type GraphUnit struct {
 	Unit      StorageUnit

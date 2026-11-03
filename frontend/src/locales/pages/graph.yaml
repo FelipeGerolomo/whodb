@@ -3,369 +3,431 @@ en_US:
   noNodesTitle: No Nodes Selected
   noNodesDescription: Select {storageUnit} on the left to add them to the graph.
   createButton: Create {storageUnit}
+  allSchemas: "All schemas"
 
 ar_AE:
   noItems: "لا توجد عناصر"
   noNodesTitle: "لم يتم تحديد أي عقد"
   noNodesDescription: "حدد {storageUnit} على اليسار لإضافتها إلى الرسم البياني."
   createButton: "إنشاء {storageUnit}"
+  allSchemas: "All schemas"
 
 de_DE:
   noItems: "Keine Artikel"
   noNodesTitle: "Keine Knoten ausgewählt"
   noNodesDescription: "Wählen Sie links {storageUnit} aus, um sie dem Diagramm hinzuzufügen."
   createButton: "Erstellen Sie {storageUnit}"
+  allSchemas: "Alle Schemas"
 
 el_GR:
   noItems: "Δεν υπάρχουν αντικείμενα"
   noNodesTitle: "Δεν επιλέχθηκαν κόμβοι"
   noNodesDescription: "Επιλέξτε {storageUnit} στα αριστερά για να τα προσθέσετε στο γράφημα."
   createButton: "Δημιουργία {storageUnit}"
+  allSchemas: "All schemas"
 
 en_GB:
   noItems: "No Items"
   noNodesTitle: "No Nodes Selected"
   noNodesDescription: "Select {storageUnit} on the left to add them to the graph."
   createButton: "Create {storageUnit}"
+  allSchemas: "All schemas"
 
 es_ES:
   noItems: "Sin artículos"
   noNodesTitle: "No hay nodos seleccionados"
   noNodesDescription: "Seleccione {storageUnit} a la izquierda para agregarlas al gráfico."
   createButton: "Crear {storageUnit}"
+  allSchemas: "Todos los esquemas"
 
 fi_FI:
   noItems: "Ei kohteita"
   noNodesTitle: "Ei valittuja solmuja"
   noNodesDescription: "Valitse {storageUnit} vasemmalta lisätäksesi ne kaavioon."
   createButton: "Luo {storageUnit}"
+  allSchemas: "All schemas"
 
 fr_FR:
   noItems: "Aucun élément"
   noNodesTitle: "Aucun nœud sélectionné"
   noNodesDescription: "Sélectionnez {storageUnit} sur la gauche pour les ajouter au graphe."
   createButton: "Créer {storageUnit}"
+  allSchemas: "Tous les schémas"
 
 it_IT:
   noItems: "Nessun articolo"
   noNodesTitle: "Nessun nodo selezionato"
   noNodesDescription: "Seleziona {storageUnit} a sinistra per aggiungerli al grafico."
   createButton: "Crea {storageUnit}"
+  allSchemas: "Tutti gli schemi"
 
 iw_IL:
   noItems: "אין פריטים"
   noNodesTitle: "לא נבחרו צמתים"
   noNodesDescription: "בחר {storageUnit} בצד שמאל כדי להוסיף אותם לתרשים."
   createButton: "צור {storageUnit}"
+  allSchemas: "All schemas"
 
 ja_JP:
   noItems: "アイテムがありません"
   noNodesTitle: "ノードが選択されていません"
   noNodesDescription: "左側の {storageUnit} を選択してグラフに追加します。"
   createButton: "{storageUnit} を作成します"
+  allSchemas: "All schemas"
 
 ko_KR:
   noItems: "항목 없음"
   noNodesTitle: "선택한 노드가 없습니다."
   noNodesDescription: "그래프에 추가하려면 왼쪽의 {storageUnit}을 선택하세요."
   createButton: "{storageUnit} 생성"
+  allSchemas: "All schemas"
 
 nl_NL:
   noItems: "Geen artikelen"
   noNodesTitle: "Geen knooppunten geselecteerd"
   noNodesDescription: "Selecteer {storageUnit} aan de linkerkant om ze aan de grafiek toe te voegen."
   createButton: "Maak {storageUnit}"
+  allSchemas: "All schemas"
 
 pl_PL:
   noItems: "Brak przedmiotów"
   noNodesTitle: "Nie wybrano żadnych węzłów"
   noNodesDescription: "Wybierz {storageUnit} po lewej stronie, aby dodać je do wykresu."
   createButton: "Utwórz {storageUnit}"
+  allSchemas: "All schemas"
 
 pt_BR:
   noItems: "Nenhum item"
   noNodesTitle: "Nenhum nó selecionado"
   noNodesDescription: "Selecione {storageUnit} à esquerda para adicioná-los ao gráfico."
   createButton: "Criar {storageUnit}"
+  allSchemas: "Todos os schemas"
 
 ro_RO:
   noItems: "Fără articole"
   noNodesTitle: "Nu au fost selectate noduri"
   noNodesDescription: "Selectați {storageUnit} din stânga pentru a le adăuga la grafic."
   createButton: "Creați {storageUnit}"
+  allSchemas: "All schemas"
 
 ru_RU:
   noItems: "Нет товаров"
   noNodesTitle: "Узлы не выбраны"
   noNodesDescription: "Выберите {storageUnit} слева, чтобы добавить их на график."
   createButton: "Создать {storageUnit}"
+  allSchemas: "All schemas"
 
 sk_SK:
   noItems: "Žiadne položky"
   noNodesTitle: "Nie sú vybraté žiadne uzly"
   noNodesDescription: "Ak ich chcete pridať do grafu, vyberte {storageUnit} vľavo."
   createButton: "Vytvoriť {storageUnit}"
+  allSchemas: "All schemas"
 
 sv_SE:
   noItems: "Inga föremål"
   noNodesTitle: "Inga noder valda"
   noNodesDescription: "Välj {storageUnit} till vänster för att lägga till dem i grafen."
   createButton: "Skapa {storageUnit}"
+  allSchemas: "All schemas"
 
 zh_CN:
   noItems: "没有商品"
   noNodesTitle: "未选择节点"
   noNodesDescription: "选择左侧的 {storageUnit} 将它们添加到图表中。"
   createButton: "创建{storageUnit}"
+  allSchemas: "All schemas"
 
 zh_TW:
   noItems: "沒有商品"
   noNodesTitle: "未選擇節點"
   noNodesDescription: "選擇左側的 {storageUnit} 將它們加入圖表。"
   createButton: "創建{storageUnit}"
+  allSchemas: "All schemas"
 
 bg_BG:
   noItems: "Няма артикули"
   noNodesTitle: "Няма избрани възли"
   noNodesDescription: "Изберете {storageUnit} отляво, за да ги добавите към графиката."
   createButton: "Създаване на {storageUnit}"
+  allSchemas: "All schemas"
 
 bn_BD:
   noItems: "কোন আইটেম নেই"
   noNodesTitle: "কোনো নোড নির্বাচন করা হয়নি"
   noNodesDescription: "তাদের গ্রাফে যুক্ত করতে বাম দিকে {storageUnit} নির্বাচন করুন।"
   createButton: "তৈরি করুন {storageUnit}"
+  allSchemas: "All schemas"
 
 ca_ES:
   noItems: "No hi ha articles"
   noNodesTitle: "No s'han seleccionat cap node"
   noNodesDescription: "Seleccioneu {storageUnit} a l'esquerra per afegir-los al gràfic."
   createButton: "Crea {storageUnit}"
+  allSchemas: "All schemas"
 
 cs_CZ:
   noItems: "Žádné položky"
   noNodesTitle: "Nejsou vybrány žádné uzly"
   noNodesDescription: "Vyberte {storageUnit} na levé straně a přidejte je do grafu."
   createButton: "Vytvořit {storageUnit}"
+  allSchemas: "All schemas"
 
 da_DK:
   noItems: "Ingen varer"
   noNodesTitle: "Ingen noder valgt"
   noNodesDescription: "Vælg {storageUnit} til venstre for at tilføje dem til grafen."
   createButton: "Opret {storageUnit}"
+  allSchemas: "All schemas"
 
 fa_IR:
   noItems: "هیچ موردی وجود ندارد"
   noNodesTitle: "هیچ گرهی انتخاب نشد"
   noNodesDescription: "{storageUnit} را در سمت چپ انتخاب کنید تا آنها را به نمودار اضافه کنید."
   createButton: "ایجاد {storageUnit}"
+  allSchemas: "All schemas"
 
 hi_IN:
   noItems: "कोई आइटम नहीं"
   noNodesTitle: "कोई नोड चयनित नहीं"
   noNodesDescription: "उन्हें ग्राफ़ में जोड़ने के लिए बाईं ओर {storageUnit} का चयन करें।"
   createButton: "{storageUnit} बनाएं"
+  allSchemas: "All schemas"
 
 hr_HR:
   noItems: "Nema predmeta"
   noNodesTitle: "Nema odabranih čvorova"
   noNodesDescription: "Odaberite {storageUnit} s lijeve strane kako biste ih dodali na grafikon."
   createButton: "Napravi {storageUnit}"
+  allSchemas: "All schemas"
 
 hu_HU:
   noItems: "Nincsenek tételek"
   noNodesTitle: "Nincsenek kiválasztva csomópontok"
   noNodesDescription: "Válassza a {storageUnit} lehetőséget a bal oldalon, hogy hozzáadja őket a diagramhoz."
   createButton: "Létrehozása {storageUnit}"
+  allSchemas: "All schemas"
 
 id_ID:
   noItems: "Tidak ada Item"
   noNodesTitle: "Tidak Ada Node yang Dipilih"
   noNodesDescription: "Pilih {storageUnit} di sebelah kiri untuk menambahkannya ke grafik."
   createButton: "Buat {storageUnit}"
+  allSchemas: "All schemas"
 
 ms_MY:
   noItems: "Tiada Item"
   noNodesTitle: "Tiada Nod Dipilih"
   noNodesDescription: "Pilih {storageUnit} di sebelah kiri untuk menambahkannya pada graf."
   createButton: "Buat {storageUnit}"
+  allSchemas: "All schemas"
 
 nb_NO:
   noItems: "Ingen varer"
   noNodesTitle: "Ingen noder valgt"
   noNodesDescription: "Velg {storageUnit} til venstre for å legge dem til grafen."
   createButton: "Opprett {storageUnit}"
+  allSchemas: "All schemas"
 
 sw_KE:
   noItems: "Hakuna Vipengee"
   noNodesTitle: "Hakuna Nodi Zilizochaguliwa"
   noNodesDescription: "Chagua {storageUnit} upande wa kushoto ili kuziongeza kwenye grafu."
   createButton: "Unda {storageUnit}"
+  allSchemas: "All schemas"
 
 ta_IN:
   noItems: "பொருட்கள் இல்லை"
   noNodesTitle: "முனைகள் எதுவும் தேர்ந்தெடுக்கப்படவில்லை"
   noNodesDescription: "வரைபடத்தில் சேர்க்க இடதுபுறத்தில் உள்ள {storageUnit} ஐத் தேர்ந்தெடுக்கவும்."
   createButton: "உருவாக்கவும் {storageUnit}"
+  allSchemas: "All schemas"
 
 th_TH:
   noItems: "ไม่มีรายการ"
   noNodesTitle: "ไม่ได้เลือกโหนด"
   noNodesDescription: "เลือก {storageUnit} ทางด้านซ้ายเพื่อเพิ่มลงในกราฟ"
   createButton: "สร้าง {storageUnit}"
+  allSchemas: "All schemas"
 
 tr_TR:
   noItems: "Ürün Yok"
   noNodesTitle: "Hiçbir Düğüm Seçilmedi"
   noNodesDescription: "Bunları grafiğe eklemek için soldaki {storageUnit} öğesini seçin."
   createButton: "{storageUnit} oluştur"
+  allSchemas: "All schemas"
 
 uk_UA:
   noItems: "Немає предметів"
   noNodesTitle: "Вузли не вибрано"
   noNodesDescription: "Виберіть {storageUnit} ліворуч, щоб додати їх до графіка."
   createButton: "Створити {storageUnit}"
+  allSchemas: "All schemas"
 
 ur_PK:
   noItems: "کوئی آئٹمز نہیں۔"
   noNodesTitle: "کوئی نوڈس منتخب نہیں کیا گیا۔"
   noNodesDescription: "انہیں گراف میں شامل کرنے کے لیے بائیں جانب {storageUnit} کو منتخب کریں۔"
   createButton: "بنائیں {storageUnit}"
+  allSchemas: "All schemas"
 
 vi_VN:
   noItems: "Không có mục nào"
   noNodesTitle: "Không có nút nào được chọn"
   noNodesDescription: "Chọn {storageUnit} ở bên trái để thêm chúng vào biểu đồ."
   createButton: "Tạo {storageUnit}"
+  allSchemas: "All schemas"
 
 af_ZA:
   noItems: "Geen items"
   noNodesTitle: "Geen nodusse gekies nie"
   noNodesDescription: "Kies {storageUnit} aan die linkerkant om hulle by die grafiek te voeg."
   createButton: "Skep {storageUnit}"
+  allSchemas: "All schemas"
 
 am_ET:
   noItems: "ምንም እቃዎች የሉም"
   noNodesTitle: "ምንም አንጓዎች አልተመረጡም።"
   noNodesDescription: "ወደ ግራፉ ለመጨመር {storageUnit}ን በግራ በኩል ይምረጡ።"
   createButton: "ፍጠር {storageUnit}"
+  allSchemas: "All schemas"
 
 az_AZ:
   noItems: "Element yoxdur"
   noNodesTitle: "Heç bir qovşaq seçilməyib"
   noNodesDescription: "Onları qrafikə əlavə etmək üçün soldan {storageUnit} seçin."
   createButton: "{storageUnit} yaradın"
+  allSchemas: "All schemas"
 
 et_EE:
   noItems: "Üksusi pole"
   noNodesTitle: "Sõlme pole valitud"
   noNodesDescription: "Nende graafikule lisamiseks valige vasakult {storageUnit}."
   createButton: "Loo {storageUnit}"
+  allSchemas: "All schemas"
 
 gu_IN:
   noItems: "કોઈ આઇટમ્સ નથી"
   noNodesTitle: "કોઈ નોડ પસંદ કરેલ નથી"
   noNodesDescription: "તેમને ગ્રાફમાં ઉમેરવા માટે ડાબી બાજુએ {storageUnit} પસંદ કરો."
   createButton: "{storageUnit} બનાવો"
+  allSchemas: "All schemas"
 
 ha_NG:
   noItems: "Babu Abubuwa"
   noNodesTitle: "Babu Nodes da aka zaɓa"
   noNodesDescription: "Zaɓi {storageUnit} a hagu don ƙara su zuwa jadawali."
   createButton: "Ƙirƙiri {storageUnit}"
+  allSchemas: "All schemas"
 
 ka_GE:
   noItems: "არ არის ელემენტი"
   noNodesTitle: "კვანძები არ არის არჩეული"
   noNodesDescription: "აირჩიეთ {storageUnit} მარცხნივ, რომ დაამატოთ ისინი გრაფიკზე."
   createButton: "შექმნა {storageUnit}"
+  allSchemas: "All schemas"
 
 km_KH:
   noItems: "គ្មានធាតុ"
   noNodesTitle: "គ្មានថ្នាំងដែលបានជ្រើសរើសទេ។"
   noNodesDescription: "ជ្រើសរើស {storageUnit} នៅខាងឆ្វេង ដើម្បីបន្ថែមពួកវាទៅក្នុងក្រាហ្វ។"
   createButton: "បង្កើត {storageUnit}"
+  allSchemas: "All schemas"
 
 kn_IN:
   noItems: "ಯಾವುದೇ ಐಟಂಗಳಿಲ್ಲ"
   noNodesTitle: "ಯಾವುದೇ ನೋಡ್‌ಗಳನ್ನು ಆಯ್ಕೆ ಮಾಡಲಾಗಿಲ್ಲ"
   noNodesDescription: "ಅವುಗಳನ್ನು ಗ್ರಾಫ್‌ಗೆ ಸೇರಿಸಲು ಎಡಭಾಗದಲ್ಲಿ {storageUnit} ಆಯ್ಕೆಮಾಡಿ."
   createButton: "ರಚಿಸಿ {storageUnit}"
+  allSchemas: "All schemas"
 
 lt_LT:
   noItems: "Nėra elementų"
   noNodesTitle: "Nepasirinkta jokių mazgų"
   noNodesDescription: "Kairėje pasirinkite {storageUnit}, kad įtrauktumėte juos į diagramą."
   createButton: "Sukurti {storageUnit}"
+  allSchemas: "All schemas"
 
 lv_LV:
   noItems: "Nav vienumu"
   noNodesTitle: "Nav atlasīts neviens mezgls"
   noNodesDescription: "Kreisajā pusē atlasiet {storageUnit}, lai pievienotu tos diagrammai."
   createButton: "Izveidot {storageUnit}"
+  allSchemas: "All schemas"
 
 ml_IN:
   noItems: "ഇനങ്ങളൊന്നുമില്ല"
   noNodesTitle: "നോഡുകളൊന്നും തിരഞ്ഞെടുത്തിട്ടില്ല"
   noNodesDescription: "ഗ്രാഫിലേക്ക് ചേർക്കുന്നതിന് ഇടതുവശത്തുള്ള {storageUnit} തിരഞ്ഞെടുക്കുക."
   createButton: "{storageUnit} സൃഷ്‌ടിക്കുക"
+  allSchemas: "All schemas"
 
 mr_IN:
   noItems: "कोणतेही आयटम नाहीत"
   noNodesTitle: "कोणतेही नोड निवडलेले नाहीत"
   noNodesDescription: "त्यांना आलेखामध्ये जोडण्यासाठी डावीकडील {storageUnit} निवडा."
   createButton: "तयार करा {storageUnit}"
+  allSchemas: "All schemas"
 
 ne_NP:
   noItems: "कुनै वस्तुहरू छैनन्"
   noNodesTitle: "कुनै नोड चयन गरिएको छैन"
   noNodesDescription: "तिनीहरूलाई ग्राफमा थप्न बाँयामा {storageUnit} चयन गर्नुहोस्।"
   createButton: "सिर्जना गर्नुहोस् {storageUnit}"
+  allSchemas: "All schemas"
 
 pa_IN:
   noItems: "ਕੋਈ ਆਈਟਮਾਂ ਨਹੀਂ"
   noNodesTitle: "ਕੋਈ ਨੋਡ ਨਹੀਂ ਚੁਣਿਆ ਗਿਆ"
   noNodesDescription: "ਉਹਨਾਂ ਨੂੰ ਗ੍ਰਾਫ ਵਿੱਚ ਜੋੜਨ ਲਈ ਖੱਬੇ ਪਾਸੇ {storageUnit} ਨੂੰ ਚੁਣੋ।"
   createButton: "ਬਣਾਓ {storageUnit}"
+  allSchemas: "All schemas"
 
 si_LK:
   noItems: "අයිතම නැත"
   noNodesTitle: "නෝඩ් තෝරාගෙන නැත"
   noNodesDescription: "ඒවා ප්‍රස්ථාරයට එක් කිරීමට වම් පස ඇති {storageUnit} තෝරන්න."
   createButton: "{storageUnit} සාදන්න"
+  allSchemas: "All schemas"
 
 sl_SI:
   noItems: "Ni predmetov"
   noNodesTitle: "Ni izbranih vozlišč"
   noNodesDescription: "Izberite {storageUnit} na levi, da jih dodate na graf."
   createButton: "Ustvari {storageUnit}"
+  allSchemas: "All schemas"
 
 sr_RS:
   noItems: "Нема предмета"
   noNodesTitle: "Нема изабраних чворова"
   noNodesDescription: "Изаберите {storageUnit} са леве стране да бисте их додали на графикон."
   createButton: "Креирај {storageUnit}"
+  allSchemas: "All schemas"
 
 te_IN:
   noItems: "అంశాలు లేవు"
   noNodesTitle: "నోడ్‌లు ఎంచుకోబడలేదు"
   noNodesDescription: "వాటిని గ్రాఫ్‌కి జోడించడానికి ఎడమవైపున {storageUnit}ని ఎంచుకోండి."
   createButton: "సృష్టించు {storageUnit}"
+  allSchemas: "All schemas"
 
 tl_PH:
   noItems: "Walang Item"
   noNodesTitle: "Walang Napiling Node"
   noNodesDescription: "Piliin ang {storageUnit} sa kaliwa upang idagdag sila sa graph."
   createButton: "Lumikha ng {storageUnit}"
+  allSchemas: "All schemas"
 
 uz_UZ:
   noItems: "Elementlar yoʻq"
   noNodesTitle: "Hech qanday tugun tanlanmagan"
   noNodesDescription: "Grafikga qo'shish uchun chap tarafdagi {storageUnit} ni tanlang."
   createButton: "Yaratish {storageUnit}"
+  allSchemas: "All schemas"
 
 yo_NG:
   noItems: "Ko si Awọn nkan"
   noNodesTitle: "Ko si Awọn apa ti a yan"
   noNodesDescription: "Yan {storageUnit} ni apa osi lati fi wọn kun aworan."
   createButton: "Ṣẹda {storageUnit}"
+  allSchemas: "All schemas"
