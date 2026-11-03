@@ -24,13 +24,13 @@ import ReactFlow, { Background, Controls, useReactFlow } from 'reactflow';
 import { Tip } from '../tip';
 import { useTranslation } from '@/hooks/use-translation';
 import { FloatingGraphEdge, GraphEdgeConnectionLine } from './edge';
-import { getDagreLayoutedElements } from './layouts';
+import { getDagreLayoutedElements, getSchemaGroupedLayout } from './layouts';
 
 
 export type IGraphCardProps<T extends unknown = any> = NodeProps<(T & {}) | undefined>;
 
 export type IGraphInstance = {
-    layout: (type?: "dagre", padding?: number) => void;
+    layout: (type?: "dagre" | "schemas", padding?: number) => void;
 } & ReactFlowInstance;
 
 export type IGraphProps<NodeData extends unknown = any, EdgeData extends unknown = any, ChangesType extends unknown = any> = {
@@ -88,6 +88,8 @@ export const Graph: FC<IGraphProps> = (props) => {
         let layouted: { nodes: Node[], edges: Edge[] } = { nodes: [], edges: [] };
         if (type === "dagre") {
             layouted = getDagreLayoutedElements(nodes, edges);
+        } else if (type === "schemas") {
+            layouted = getSchemaGroupedLayout(nodes, edges);
         }
 
         setIsLayingOut(true);

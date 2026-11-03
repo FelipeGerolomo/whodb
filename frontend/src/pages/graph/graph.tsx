@@ -22,6 +22,7 @@ import { ReactFlowProvider, useEdgesState, useNodesState} from "reactflow";
 import {GraphElements} from "../../components/graph/constants";
 import type { IGraphInstance} from "../../components/graph/graph";
 import {Graph} from "../../components/graph/graph";
+import {SchemaGroupNode} from "../../components/graph/schema-group";
 import {createEdge, createNode} from "../../components/graph/utils";
 import {LoadingPage} from "../../components/loading";
 import {InternalPage} from "../../components/page";
@@ -458,11 +459,11 @@ export const GraphPage: FC = () => {
         if (isInitialized && computedNodes.length > 0) {
             // Wait for nodes to be rendered, then measure and layout
             const timer = setTimeout(() => {
-                reactFlowRef.current?.layout("dagre");
+                reactFlowRef.current?.layout(isAllSchemas ? "schemas" : "dagre");
             }, 50);
             return () => { clearTimeout(timer); };
         }
-    }, [isInitialized, computedNodes, computedEdges]);
+    }, [isInitialized, isAllSchemas, computedNodes, computedEdges]);
 
     const handleOnReady = useCallback((instance: IGraphInstance) => {
         reactFlowRef.current = instance;
@@ -471,6 +472,7 @@ export const GraphPage: FC = () => {
 
     const nodeTypes = useMemo(() => ({
         [GraphElements.StorageUnit]: StorageUnitGraphCard,
+        [GraphElements.SchemaGroup]: SchemaGroupNode,
     }), []);
 
     if (graphLoading) {
@@ -509,7 +511,7 @@ export const GraphPage: FC = () => {
                         : <Graph nodes={nodes} edges={edges} nodeTypes={nodeTypes}
                                 setNodes={setNodes} setEdges={setEdges}
                                 onNodesChange={onNodesChange} onEdgesChange={onEdgesChange}
-                                minZoom={0.1}
+                                minZoom={isAllSchemas ? 0.01 : 0.1}
                                 onNodeClick={handleNodeClick}
                                 onReady={handleOnReady} />
                 }

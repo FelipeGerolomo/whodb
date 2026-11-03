@@ -16,4 +16,5 @@
 
 export enum GraphElements {
     StorageUnit = "storage-unit",
+    SchemaGroup = "schema-group",
 }

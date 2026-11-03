@@ -16,6 +16,7 @@
 
 import Dagre from '@dagrejs/dagre';
 import type { Edge, Node } from 'reactflow';
+import { GraphElements } from './constants';
 
 type ILayoutOption = {
     direction: "TB" | "LR";
@@ -465,6 +466,80 @@ export const getDagreLayoutedElements = (nodes: Node[] = [], edges: Edge[] = [],
 
     return {
         nodes: finalNodes,
+        edges,
+    };
+};
+
+// Match the border and name of SchemaGroupNode.
+const SCHEMA_GROUP_PADDING = 160;
+const SCHEMA_GROUP_HEADER = 400;
+
+function schemaOf(nodeId: string): string {
+    return nodeId.slice(0, nodeId.indexOf('.'));
+}
+
+/**
+ * Lays out an all-schemas graph, whose node ids are "schema.table": each schema's tables are laid
+ * out on their own and drawn inside a box for the schema, and the boxes are laid out by the
+ * relationships between their schemas. The tables become children of their box.
+ */
+export const getSchemaGroupedLayout = (nodes: Node[] = [], edges: Edge[] = []) => {
+    const tables = nodes
+        .filter(node => node.type !== GraphElements.SchemaGroup)
+        .map(({ parentNode: _parentNode, ...node }) => node);
+    const schemas = [...new Set(tables.map(node => schemaOf(node.id)))].sort();
+
+    const groups = schemas.map(schema => {
+        const schemaTables = tables.filter(node => schemaOf(node.id) === schema);
+        const ids = new Set(schemaTables.map(node => node.id));
+        const laidOut = getDagreLayoutedElements(
+            schemaTables,
+            edges.filter(edge => ids.has(edge.source) && ids.has(edge.target)),
+        ).nodes;
+        const minX = Math.min(...laidOut.map(node => node.position.x));
+        const minY = Math.min(...laidOut.map(node => node.position.y));
+        const maxX = Math.max(...laidOut.map(node => node.position.x + nodeWidth(node)));
+        const maxY = Math.max(...laidOut.map(node => node.position.y + nodeHeight(node)));
+        return {
+            schema,
+            width: maxX - minX + SCHEMA_GROUP_PADDING * 2,
+            height: maxY - minY + SCHEMA_GROUP_HEADER + SCHEMA_GROUP_PADDING,
+            children: laidOut.map(node => ({
+                ...node,
+                parentNode: `schema:${schema}`,
+                position: {
+                    x: node.position.x - minX + SCHEMA_GROUP_PADDING,
+                    y: node.position.y - minY + SCHEMA_GROUP_HEADER,
+                },
+            })),
+        };
+    });
+
+    const g = new Dagre.graphlib.Graph().setDefaultEdgeLabel(() => ({}));
+    g.setGraph({ rankdir: "LR", nodesep: 150, ranksep: 300, marginx: 50, marginy: 50 });
+    groups.forEach(group => g.setNode(group.schema, { width: group.width, height: group.height }));
+    edges.forEach(edge => {
+        const source = schemaOf(edge.source);
+        const target = schemaOf(edge.target);
+        if (source !== target) g.setEdge(source, target);
+    });
+    Dagre.layout(g);
+
+    const groupNodes: Node[] = groups.map(group => {
+        const { x, y } = g.node(group.schema);
+        return {
+            id: `schema:${group.schema}`,
+            type: GraphElements.SchemaGroup,
+            data: { name: group.schema },
+            position: { x: x - group.width / 2, y: y - group.height / 2 },
+            style: { width: group.width, height: group.height },
+            selectable: false,
+        };
+    });
+
+    // A parent precedes its children, as React Flow requires.
+    return {
+        nodes: [...groupNodes, ...groups.flatMap(group => group.children)],
         edges,
     };
 };
